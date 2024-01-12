@@ -1,4 +1,274 @@
 body {
-    background-color: gray;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  font-family: 'Noto Sans', sans-serif;
+}
+
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  background-color: #fffdef;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 1;
+  transition: opacity 0.2s linear;
+  transform: opacity 1s linear;
+  // animation: fadeInOut 2s ease-in-out forwards;
+
+  &__content {
+    position: relative;
+    width: 375px;
+    height: 140px;
+
+    animation: reduceSize 0.5s ease forwards;
+
+    &>* {
+      position: absolute;
+
+      &:nth-child(1) {
+        top: 0;
+        left: 0;
+
+        i {
+          animation: rotateTopIcon ease 0.5s forwards 0.5s;
+        }
+
+        animation: firstIcon ease 0.5s forwards 0.5s,
+        mergeIcons ease 0.5s forwards 1s;
+      }
+
+      &:nth-child(2) {
+        top: 0;
+        left: 76px;
+        margin-inline: 10px;
+
+        i {
+          animation: makeVisible 0.5s ease forwards, rotateTopIcon ease 0.5s forwards 0.5s;
+        }
+
+        animation: secondIcon ease 0.5s forwards 0.5s,
+        mergeIcons ease 0.5s forwards 1s;
+      }
+
+      &:nth-child(3) {
+        bottom: 0;
+        right: 76px;
+        margin-inline: 10px;
+
+        i {
+          animation: makeVisible 0.5s ease forwards, rotateBottomIcon ease 0.5s forwards 0.5s;
+        }
+
+        animation: thirdIcon ease 0.5s forwards 0.5s,
+        mergeIcons ease 0.5s forwards 1s;
+      }
+
+      &:nth-child(4) {
+        bottom: 0;
+        right: 0;
+
+        animation: fourthIcon ease 0.5s forwards 0.5s,
+          mergeIcons ease 0.5s forwards 1s;
+      }
+    }
+
+    p {
+      text-transform: uppercase;
+      font-weight: bold;
+      color: #ff4e26;
+      font-size: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 80px;
+      opacity: 0;
+      visibility: hidden;
+
+      animation: slideUp ease 0.25s forwards 1.25s
+    }
   }
-  
+}
+
+.pill {
+  font-size: 24px;
+  text-transform: uppercase;
+  color: #fffdfd;
+  background-color: #ff4e26;
+  text-align: center;
+  border-radius: 50px;
+  padding: 0 22px;
+  height: 65px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  span {
+    opacity: 1;
+    visibility: visible;
+
+    animation: fadeText 0.5s ease forwards;
+  }
+
+  i {
+    opacity: 0;
+    visibility: hidden;
+    width: 0;
+    font-size: 32px;
+  }
+
+  &--reverse {
+    background-color: #fffdfd;
+    color: #ff4e26;
+  }
+}
+
+.icon {
+  flex-shrink: 0;
+  flex-grow: 0;
+  color: #ff4e26;
+  border: 1px solid #ff4e26;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+
+  &--reverse {
+    background-color: #ff4e26;
+    color: #fffdfd
+  }
+
+  i {
+    font-size: 32px;
+  }
+}
+
+/** Keyframes */
+@keyframes fadeInOut {
+  0% {
+    opacity: 1;
+  }
+
+  25% {
+    opacity: 1;
+  }
+
+  75% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeText {
+  to {
+    opacity: 0;
+    visibility: hidden;
+    width: 0;
+  }
+}
+
+@keyframes makeVisible {
+  to {
+    opacity: 1;
+    visibility: visible;
+    width: initial;
+  }
+}
+
+@keyframes reduceSize {
+  to {
+    width: 290px;
+  }
+}
+
+@keyframes rotateTopIcon {
+  50% {
+    transform: rotate(90deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes rotateBottomIcon {
+  50% {
+    transform: rotate(90deg);
+  }
+
+  100% {
+    transform: rotate(90deg);
+  }
+}
+
+@keyframes firstIcon {
+  to {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes secondIcon {
+  to {
+    top: 50%;
+    transform: translateY(-50%);
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    padding: 0;
+    margin-inline: 0;
+  }
+}
+
+@keyframes thirdIcon {
+  to {
+    top: 50%;
+    transform: translateY(-50%);
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    padding: 0;
+    margin-inline: 0;
+  }
+}
+
+@keyframes fourthIcon {
+  to {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes mergeIcons {
+  50% {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  100% {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes slideUp {
+  100% {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0);
+    top: 50px
+  }
+}
