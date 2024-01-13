@@ -5,6 +5,12 @@ body {
   font-family: 'Noto Sans', sans-serif;
 }
 
+.container {
+  margin: 0 auto;
+  max-width: 1600px;
+}
+
+/** Loader */
 .loader {
   position: fixed;
   top: 0;
@@ -16,11 +22,11 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  pointer-events: none;
 
   opacity: 1;
   transition: opacity 0.2s linear;
-  transform: opacity 1s linear;
-  // animation: fadeInOut 2s ease-in-out forwards;
+  animation: fadeInOut 2s ease-in-out forwards;
 
   &__content {
     position: relative;
@@ -151,7 +157,6 @@ body {
   }
 }
 
-/** Keyframes */
 @keyframes fadeInOut {
   0% {
     opacity: 1;
@@ -262,5 +267,177 @@ body {
     visibility: visible;
     transform: translate(-50%, 0);
     top: 50px
+  }
+}
+
+/** Scrolling */
+.scroll-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  scroll-behavior: smooth;
+  overflow: auto;
+  scroll-snap-type: y mandatory;
+  /* Firefox */
+  scrollbar-width: none;
+  /* Internet Explorer and Microsoft Edge */
+  -ms-overflow-style: none;
+
+  /* Webkit (Chrome, Safari) */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+section {
+  width: 100%;
+  height: 100vh;
+  scroll-snap-align: start;
+}
+
+/** Header */
+header {
+  z-index: 10;
+  background-color: transparent;
+  height: 80px;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.left-menu {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  opacity: 1;
+  top: 0;
+
+  animation: dropFade 1s ease-in-out forwards;
+
+  &__label {
+    color: #010001;
+    border: 1px solid #010001;
+    border-radius: 25px;
+    padding: 5px 10px;
+    font-size: 14px;
+  }
+
+  &__btn {
+    border: 1px solid #010001;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.right-menu {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 14px;
+  position: relative;
+  opacity: 1;
+  top: 0;
+
+  animation: dropFade 1s ease-in-out forwards;
+
+  &__login {
+    color: #010001;
+    border: 1px solid #010001;
+    border-radius: 25px;
+    padding: 5px 15px;
+  }
+
+  &__signup {
+    color: #fffdfd;
+    border: 1px solid #ff4e26;
+    background-color: #ff4e26;
+    border-radius: 25px;
+    padding: 5px 15px;
+  }
+
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+
+  .icon {
+    width: 32px;
+    height: 32px;
+    opacity: 0;
+
+    animation: growCircle 0.75s ease-in-out forwards;
+
+    i {
+      font-size: 16px;
+    }
+  }
+
+  span {
+    text-transform: uppercase;
+    font-size: 14px;
+    z-index: -1;
+    opacity: 0;
+    visibility: hidden;
+    width: 0;
+    position: relative;
+    left: -100px;
+
+    animation: slideRight 0.5s ease-in-out forwards 0.75s;
+  }
+}
+
+@keyframes dropFade {
+  0% {
+    top: -100px;
+    opacity: 0;
+  }
+
+  100% {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes growCircle {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+
+  100% {
+    width: 32px;
+    height: 32px;
+    opacity: 1;
+  }
+}
+
+@keyframes slideRight {
+
+  0% {
+    width: 0;
+    opacity: 0;
+    visibility: hidden;
+    left: -100px;
+  }
+
+  100% {
+    width: 80px;
+    opacity: 1;
+    visibility: visible;
+    left: 0;
   }
 }
