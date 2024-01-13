@@ -300,6 +300,26 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  &.on-screen {
+    .left-menu {
+      animation: dropFade 1s ease-in-out forwards;
+    }
+
+    .right-menu {
+      animation: dropFade 1s ease-in-out forwards;
+    }
+
+    .logo {
+      .icon {
+        animation: growCircle 0.75s ease-in-out forwards;
+      }
+
+      span {
+        animation: slideRight 0.5s ease-in-out forwards 0.75s;
+      }
+    }
+  }
 }
 
 .left-menu {
@@ -310,8 +330,6 @@ header {
   opacity: 0;
   top: -100px;
 
-  // TODO: Add delay for loader
-  animation: dropFade 1s ease-in-out forwards;
 
   &__label {
     color: #010001;
@@ -341,8 +359,6 @@ header {
   opacity: 0;
   top: -100px;
 
-  // TODO: Add delay for loader
-  animation: dropFade 1s ease-in-out forwards;
 
   &__login {
     color: #010001;
@@ -374,7 +390,7 @@ header {
     height: 32px;
     opacity: 0;
 
-    animation: growCircle 0.75s ease-in-out forwards;
+
 
     i {
       font-size: 16px;
@@ -391,7 +407,6 @@ header {
     position: relative;
     left: -100px;
 
-    animation: slideRight 0.5s ease-in-out forwards 0.75s;
   }
 }
 
@@ -446,6 +461,35 @@ section {
   position: relative;
   overflow: hidden;
 
+  &.on-screen {
+    .motto {
+      p {
+        animation: upwardsFade 1s ease-in-out forwards;
+      }
+
+      &::before {
+        animation: mottoBall 0.5s ease-in-out forwards 0.5s;
+      }
+    }
+
+    .social {
+      i {
+        animation: socialIcons 0.5s ease-in-out forwards 0.5s;
+      }
+
+      p {
+        animation: upwardsFade 1s ease-in-out forwards;
+      }
+    }
+
+    .scroll-indicator {
+      animation: scrollIndicator 1s ease-in-out forwards;
+
+      i {
+        animation: iconHover 1s infinite;
+      }
+    }
+  }
 
   &.hero {
     display: flex;
@@ -459,71 +503,141 @@ section {
       display: flex;
       overflow: hidden;
       height: 200px;
+    }
 
-      span {
-        position: relative;
-        opacity: 0;
-        bottom: -100px;
+    &.on-screen h1 span {
+      position: relative;
+      opacity: 0;
+      bottom: -100px;
+      animation: hero 1s ease-in-out forwards;
 
-        animation: hero 1s ease-in-out forwards;
+      &:nth-child(2) {
+        animation-delay: 0.1s;
+      }
 
-        &:nth-child(2) {
-          animation-delay: 0.1s;
+      &:nth-child(3) {
+        animation-delay: 0.15s;
+      }
+
+      &:nth-child(4) {
+        animation-delay: 0.2s;
+      }
+
+      &:nth-child(5) {
+        animation-delay: 0.25s;
+      }
+
+      &:nth-child(6) {
+        animation-delay: 0.3s;
+      }
+
+      &:nth-child(7) {
+        animation-delay: 0.35s;
+      }
+
+      &:nth-child(8) {
+        animation-delay: 0.4s;
+      }
+
+      &:nth-child(9) {
+        animation-delay: 0.45s;
+      }
+
+      &:nth-child(10) {
+        animation-delay: 0.5s;
+      }
+
+      &:nth-child(11) {
+        animation-delay: 0.55s;
+      }
+
+      &:nth-child(12) {
+        animation-delay: 0.6s;
+      }
+
+      &:nth-child(13) {
+        animation-delay: 0.65s;
+      }
+
+      &:nth-child(14) {
+        animation-delay: 0.7s;
+      }
+    }
+  }
+
+  &.get-started {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+      margin: 0;
+      font-size: 130px;
+      width: 100%;
+      font-weight: 400;
+
+      &>div {
+        overflow: hidden;
+
+        &:nth-of-type(1),
+        &:nth-of-type(3) {
+          text-align: right;
         }
 
-        &:nth-child(3) {
-          animation-delay: 0.15s;
+        span {
+          position: relative;
+          opacity: 0;
+          bottom: -100px;
         }
+      }
+    }
 
-        &:nth-child(4) {
-          animation-delay: 0.2s;
-        }
+    .first-box {
+      font-size: 14px;
 
-        &:nth-child(5) {
-          animation-delay: 0.25s;
-        }
+      div {
+        margin-bottom: 5px;
+      }
 
-        &:nth-child(6) {
-          animation-delay: 0.3s;
-        }
+      i {
+        color: #ff4e26;
+        background-color: #d8e8f7;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
 
-        &:nth-child(7) {
-          animation-delay: 0.35s;
-        }
+      p {
+        margin: 0;
+        // text-align: left;
+        font-weight: bold;
+      }
+    }
 
-        &:nth-child(8) {
-          animation-delay: 0.4s;
-        }
-
-        &:nth-child(9) {
-          animation-delay: 0.45s;
-        }
-
-        &:nth-child(10) {
-          animation-delay: 0.5s;
-        }
-
-        &:nth-child(11) {
-          animation-delay: 0.55s;
-        }
-
-        &:nth-child(12) {
-          animation-delay: 0.6s;
-        }
-
-        &:nth-child(13) {
-          animation-delay: 0.65s;
-        }
-
-        &:nth-child(14) {
-          animation-delay: 0.7s;
-        }
+    &.on-screen {
+      div span {
+        animation: 0.5s fadeUp ease-in-out forwards;
       }
     }
   }
 }
 
 @keyframes hero {
+  0% {
+    opacity: 0;
+    bottom: -100px;
+  }
+
+  100% {
+    opacity: 1;
+    bottom: 0;
+  }
+}
+
+@keyframes fadeUp {
   0% {
     opacity: 0;
     bottom: -100px;
@@ -545,8 +659,6 @@ section {
     margin: 0;
     bottom: -100px;
     opacity: 0;
-
-    animation: upwardsFade 1s ease-in-out forwards;
   }
 
   &::before {
@@ -558,8 +670,6 @@ section {
     border-radius: 50%;
     left: 0;
     top: 0;
-
-    animation: mottoBall 0.5s ease-in-out forwards 0.5s;
   }
 }
 
@@ -583,8 +693,6 @@ section {
       border-radius: 50%;
       width: 32px;
       height: 32px;
-
-      animation: socialIcons 0.5s ease-in-out forwards 0.5s;
     }
   }
 
@@ -594,8 +702,6 @@ section {
     margin-top: 10px;
     bottom: -100px;
     opacity: 0;
-
-    animation: upwardsFade 1s ease-in-out forwards;
   }
 }
 
@@ -612,14 +718,10 @@ section {
   text-align: center;
   opacity: 0;
 
-  animation: scrollIndicator 1s ease-in-out forwards;
-
   i {
     font-size: 24px;
     position: relative;
     top: 5px;
-
-    animation: iconHover 1s infinite;
   }
 }
 
