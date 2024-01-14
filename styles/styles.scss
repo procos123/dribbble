@@ -599,6 +599,7 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 
     h1 {
       margin: 0;
@@ -608,18 +609,127 @@ section {
 
       &>div {
         overflow: hidden;
+        display: flex;
 
         &:nth-of-type(1),
         &:nth-of-type(3) {
           text-align: right;
         }
 
-        span {
+        &>span {
           position: relative;
           opacity: 0;
           bottom: -100px;
         }
       }
+    }
+
+    .dental-assistance {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+
+      span {
+        font-size: 16px;
+        color: #ff4e26;
+        background-color: #d8e8f7;
+        border-radius: 25px;
+        height: 50px;
+        width: 0;
+        line-height: 50px;
+        text-align: center;
+        overflow: hidden;
+      }
+
+      i {
+        font-size: 24px;
+        background-color: #ff4e26;
+        color: white;
+        border-radius: 50%;
+        width: 0;
+        height: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    .bubbles {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .bubble-image {
+      border-radius: 50%;
+      background-image: url('/img/d-card2.jpg');
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+      left: 15px;
+      width: 0;
+      height: 0;
+      opacity: 0;
+    }
+
+    .bubble-icon {
+      border-radius: 50%;
+      background-color: #d7e8f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ff4e26;
+      font-size: 64px;
+      width: 0;
+      height: 0;
+      opacity: 0;
+      margin-right: 20px;
+    }
+
+    .get-started__cta {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      cursor: pointer;
+
+      span {
+        color: white;
+        background-color: #ff4e26;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-size: 24px;
+      }
+    }
+
+    .white-circle {
+      width: 160px;
+      height: 160px;
+      background-color: white;
+      border-radius: 50%;
+    }
+
+    .half-circle {
+      width: 164px;
+      height: 82px;
+      background-color: #ff4e26;
+      border-radius: 0 0 82px 82px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, 0);
+      z-index: -1;
     }
 
     .first-box {
@@ -642,14 +752,44 @@ section {
 
       p {
         margin: 0;
-        // text-align: left;
         font-weight: bold;
       }
     }
 
     &.on-screen {
-      div span {
+      h1>div>span {
         animation: 0.5s fadeUp ease-in-out forwards;
+      }
+
+      .dental-assistance {
+        span {
+          animation: 0.5s assistanceText ease-in-out forwards 0.75s;
+        }
+
+        i {
+          animation: 0.5s assistanceIcon ease-in-out forwards 0.75s;
+        }
+      }
+
+      .bubble-icon,
+      .bubble-image {
+        animation: 0.5s bubble ease-in-out forwards 0.75s;
+      }
+
+      .get-started__cta {
+        animation: 0.5s fadeUpCircle ease-in-out forwards;
+
+        span {
+          animation: 0.5s innerCircle ease-in-out forwards, 0.75s innerCircleShrink ease-in-out forwards 1s;
+        }
+      }
+
+      .white-circle {
+        animation: 0.5s whiteCircle ease-in-out forwards;
+      }
+
+      .half-circle {
+        animation: 0.5s halfCircle ease-in-out forwards, 0.75s halfCircleShrink ease-in-out forwards 1s;
       }
     }
   }
@@ -862,6 +1002,42 @@ section {
   }
 }
 
+@keyframes bubble {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+
+  100% {
+    width: 100px;
+    height: 100px;
+    opacity: 1;
+  }
+}
+
+@keyframes assistanceText {
+  0% {
+    width: 0;
+  }
+
+  100% {
+    width: 140px;
+  }
+}
+
+@keyframes assistanceIcon {
+  0% {
+    width: 0;
+    height: 0;
+  }
+
+  100% {
+    width: 50px;
+    height: 50px;
+  }
+}
+
 .cta-btn {
   font-size: 24px;
   border: 1px solid #ff4e26;
@@ -891,6 +1067,89 @@ section {
     opacity: 1;
     bottom: 0;
   }
+}
+
+@keyframes innerCircle {
+  0% {
+    width: 0;
+    height: 0;
+  }
+
+  100% {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@keyframes innerCircleShrink {
+  0% {
+    width: 150px;
+    height: 150px;
+  }
+
+  50% {
+    width: 130px;
+    height: 130px;
+  }
+
+  100% {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@keyframes whiteCircle {
+  0% {
+    width: 0;
+    height: 0;
+  }
+
+  100% {
+    width: 160px;
+    height: 160px;
+  }
+}
+
+@keyframes halfCircle {
+  0% {
+    width: 0;
+    height: 0;
+  }
+
+  100% {
+    width: 164px;
+    height: 82px;
+  }
+}
+
+@keyframes halfCircleShrink {
+  0% {
+    width: 164px;
+    height: 82px;
+  }
+
+  50% {
+    width: 158px;
+    height: 82px;
+  }
+
+  100% {
+    width: 164px;
+    height: 82px;
+  }
+}
+
+@keyframes fadeUpCircle {
+  0% {
+    opacity: 0;
+    bottom: -100px;
+  }
+
+  100% {
+    opacity: 1;
+    bottom: 40px;
+  }
+
 }
 
 @keyframes fadeUp {
