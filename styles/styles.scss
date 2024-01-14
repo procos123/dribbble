@@ -623,6 +623,23 @@ section {
       }
     }
   }
+
+  .cta {
+
+    &__inner {
+      position: relative;
+      height: 100%;
+      width: 50%;
+      display: flex;
+      align-items: center;
+
+      h1 {
+        margin: 0;
+        font-size: 80px;
+      }
+    }
+  }
+
 }
 
 @keyframes hero {
