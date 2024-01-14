@@ -608,12 +608,18 @@ section {
       font-weight: 400;
 
       &>div {
-        overflow: hidden;
         display: flex;
+        position: relative;
 
         &:nth-of-type(1),
         &:nth-of-type(3) {
           text-align: right;
+          align-items: center;
+
+          &>span {
+            margin-left: 200px;
+
+          }
         }
 
         &>span {
@@ -663,7 +669,7 @@ section {
 
     .bubble-image {
       border-radius: 50%;
-      background-image: url('/img/d-card2.jpg');
+      background-image: url('/img/d-card6.jpg');
       background-position: center center;
       background-repeat: no-repeat;
       background-size: cover;
@@ -734,6 +740,9 @@ section {
 
     .first-box {
       font-size: 14px;
+      text-align: left;
+      opacity: 0;
+      overflow: hidden;
 
       div {
         margin-bottom: 5px;
@@ -751,14 +760,142 @@ section {
       }
 
       p {
+        font-size: 20px;
         margin: 0;
         font-weight: bold;
+        opacity: 0;
+        position: relative;
+      }
+    }
+
+    .side-card {
+      position: absolute;
+      top: calc(100% - 50px);
+      width: 280px;
+      height: 140px;
+      opacity: 0;
+      border-radius: 30px;
+      background-color: #010001;
+      background-image: url('/img/d-card2.jpg');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+
+      i {
+        color: #ff4e26;
+        font-size: 20px;
+        background-color: #d7e8f5;
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        right: -20px;
+        bottom: -20px;
+      }
+    }
+
+    .women {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+
+      i {
+        color: #ff4e26;
+        background-color: #d7e8f5;
+        border-radius: 50%;
+        width: 0;
+        height: 0;
+        font-size: 0;
+        position: absolute;
+        top: 50%;
+        left: 210px;
+        transform: translateY(-50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    .woman-bubble {
+      background-color: #010001;
+      background-position: center center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      border-radius: 50%;
+      position: absolute;
+      left: 25px;
+
+      &:nth-of-type(1) {
+        background-image: url('/img/woman1.jpg');
+      }
+
+      &:nth-of-type(2) {
+        background-image: url('/img/woman2.jpg');
+      }
+
+      &:nth-of-type(3) {
+        background-image: url('/img/woman3.jpg');
+      }
+
+      &:nth-of-type(4) {
+        background-image: url('/img/woman4.jpg');
       }
     }
 
     &.on-screen {
-      h1>div>span {
-        animation: 0.5s fadeUp ease-in-out forwards;
+      h1>div {
+        &:nth-of-type(2) {
+          &>span {
+            animation: 0.5s fadeUp ease-in-out forwards;
+          }
+        }
+
+        &:nth-of-type(1),
+        &:nth-of-type(3) {
+          &>span {
+            animation: 0.5s fadeUp ease-in-out forwards, 0.5s slideLeft ease-in-out forwards 0.75s;
+          }
+        }
+      }
+
+      .first-box {
+        animation: 0.5s firstBox ease-in-out forwards 0.75s;
+
+        p {
+          animation: 0.5s fadeUp ease-in-out forwards 1s;
+        }
+      }
+
+      .side-card {
+        animation: 0.5s sideCard ease-in-out forwards 0.75s;
+      }
+
+      .women {
+        i {
+          animation: 0.5s womanPlus ease-in-out forwards 1.25s;
+        }
+      }
+
+      .woman-bubble {
+        &:nth-last-of-type(1) {
+          animation: 0.5s womanBubble ease-in-out forwards 1s;
+        }
+
+        &:nth-last-of-type(2) {
+          animation: 0.5s womanBubble ease-in-out forwards 1s, 0.5s womanBubble2 ease-in-out forwards 1.5s;
+        }
+
+        &:nth-last-of-type(3) {
+          animation: 0.5s womanBubble ease-in-out forwards 1s, 0.5s womanBubble3 ease-in-out forwards 1.5s;
+        }
+
+        &:nth-last-of-type(4) {
+          animation: 0.5s womanBubble ease-in-out forwards 1s, 0.5s womanBubble4 ease-in-out forwards 1.5s;
+        }
       }
 
       .dental-assistance {
@@ -999,6 +1136,96 @@ section {
         }
       }
     }
+  }
+}
+
+@keyframes womanPlus {
+  0% {
+    width: 0;
+    height: 0;
+    font-size: 0;
+  }
+
+  100% {
+    width: 26px;
+    height: 26px;
+    font-size: 18px;
+  }
+}
+
+@keyframes womanBubble {
+  0% {
+    width: 0;
+    height: 0;
+  }
+
+  100% {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@keyframes womanBubble2 {
+  0% {
+    left: 25px;
+  }
+
+  100% {
+    left: 60px;
+  }
+}
+
+@keyframes womanBubble3 {
+  0% {
+    left: 25px;
+  }
+
+  100% {
+    left: 95px;
+  }
+}
+
+@keyframes womanBubble4 {
+  0% {
+    left: 25px;
+  }
+
+  100% {
+    left: 130px;
+  }
+}
+
+@keyframes sideCard {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes firstBox {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+    margin-left: 0;
+  }
+
+  100% {
+    visibility: visible;
+    opacity: 1;
+    margin-left: 20px;
+  }
+}
+
+@keyframes slideLeft {
+  0% {
+    margin-left: 200px;
+  }
+
+  100% {
+    margin-left: 0;
   }
 }
 
@@ -1315,6 +1542,7 @@ section {
     }
 
     span {
+      flex-shrink: 0;
       font-size: 24px;
       background-color: white;
       text-wrap: nowrap;
