@@ -295,7 +295,8 @@ header {
   background-color: transparent;
   height: 80px;
   width: 100%;
-  position: sticky;
+  max-width: 1500px;
+  position: fixed;
   top: 0;
   display: flex;
   align-items: center;
@@ -332,6 +333,8 @@ header {
 
 
   &__label {
+    cursor: pointer;
+    background-color: transparent;
     color: #010001;
     border: 1px solid #010001;
     border-radius: 25px;
@@ -340,6 +343,7 @@ header {
   }
 
   &__btn {
+    cursor: pointer;
     border: 1px solid #010001;
     border-radius: 50%;
     width: 30px;
@@ -361,13 +365,16 @@ header {
 
 
   &__login {
+    cursor: pointer;
     color: #010001;
     border: 1px solid #010001;
+    background-color: transparent;
     border-radius: 25px;
     padding: 5px 15px;
   }
 
   &__signup {
+    cursor: pointer;
     color: #fffdfd;
     border: 1px solid #ff4e26;
     background-color: #ff4e26;
@@ -378,6 +385,7 @@ header {
 }
 
 .logo {
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -647,23 +655,158 @@ section {
     }
   }
 
-  .cta {
+  &.cta {
 
-    &__inner {
+    .cta__inner {
       position: relative;
       height: 100%;
       width: 50%;
       display: flex;
-      align-items: center;
+      flex-direction: column;
+      justify-content: center;
 
       h1 {
         margin: 0;
+        margin-top: 32px;
         font-size: 80px;
+        font-weight: 400;
+        overflow: hidden;
+
+        div {
+          overflow: hidden;
+          display: flex;
+        }
+
+        span {
+          position: relative;
+        }
+      }
+    }
+
+    .cta__icons {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      i {
+        background-color: #d7e8f5;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        font-size: 30px;
+        color: #ff4e26;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    .cta__buttons {
+      margin-top: 30px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      position: relative;
+    }
+
+    &.on-screen {
+      h1 span {
+        position: relative;
+        opacity: 0;
+        bottom: -100px;
+        animation: hero 0.5s ease-in-out forwards;
+
+        &:nth-child(2) {
+          animation-delay: 0.1s;
+        }
+
+        &:nth-child(3) {
+          animation-delay: 0.12s;
+        }
+
+        &:nth-child(4) {
+          animation-delay: 0.14s;
+        }
+
+        &:nth-child(5) {
+          animation-delay: 0.16s;
+        }
+
+        &:nth-child(6) {
+          animation-delay: 0.18s;
+        }
+
+        &:nth-child(7) {
+          animation-delay: 0.2s;
+        }
+
+        &:nth-child(8) {
+          animation-delay: 0.22s;
+        }
+
+        &:nth-child(9) {
+          animation-delay: 0.24s;
+        }
+
+        &:nth-child(10) {
+          animation-delay: 0.26s;
+        }
+
+        &:nth-child(11) {
+          animation-delay: 0.28s;
+        }
+
+        &:nth-child(12) {
+          animation-delay: 0.3s;
+        }
+
+        &:nth-child(13) {
+          animation-delay: 0.32s;
+        }
+
+        &:nth-child(14) {
+          animation-delay: 0.34s;
+        }
+
+        &:nth-child(15) {
+          animation-delay: 0.36s;
+        }
+
+        &:nth-child(16) {
+          animation-delay: 0.38s;
+        }
+      }
+
+      .cta__icons i {
+        animation: 0.5s ctaIcons ease-in-out forwards;
+      }
+
+      .cta-btn {
+        animation: 0.5s fadeUp ease-in-out forwards;
       }
     }
   }
-
 }
+
+.cta-btn {
+  font-size: 24px;
+  border: 1px solid #ff4e26;
+  background-color: #ff4e26;
+  color: white;
+  border-radius: 25px;
+  padding: 10px 20px;
+  cursor: pointer;
+  position: relative;
+  opacity: 0;
+  bottom: -100px;
+
+  &--reverse {
+    border: 1px solid #010001;
+    background-color: transparent;
+    color: #010001;
+  }
+}
+
 
 @keyframes hero {
   0% {
@@ -725,6 +868,7 @@ section {
     gap: 12px;
 
     i {
+      cursor: pointer;
       font-size: 0;
       display: flex;
       align-items: center;
@@ -746,6 +890,7 @@ section {
 }
 
 .scroll-indicator {
+  cursor: pointer;
   position: absolute;
   bottom: 0px;
   left: 50%;
@@ -879,6 +1024,17 @@ section {
 
   100% {
     font-size: 20px;
+  }
+}
+
+@keyframes ctaIcons {
+  0% {
+    font-size: 0;
+    transform: rotate(-90deg);
+  }
+
+  100% {
+    font-size: 30px;
   }
 }
 
